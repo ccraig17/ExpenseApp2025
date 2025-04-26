@@ -8,7 +8,7 @@ def init_db(db_name):
         return False
     query = QSqlQuery()
     query.exec("""
-    CREATE TABLE IF NOT EXIST expenses(
+    CREATE TABLE IF NOT EXISTS expenses(
         id INTEGER PRIMARY KEY AUTOINCREMENT, 
         date TEXT,
         category TEXT,
@@ -25,7 +25,8 @@ def get_expense():
     query = QSqlQuery("SELECT * FROM expenses ORDER BY date DESC")
     expenses = [] #empty list
     while query.next():
-       expenses.append([query.value(i)] for i in range(5))
+        row = [query.value(i) for i in range(5)]
+        expenses.append(row)
     return expenses
 
 def add_expanses(date, category, amount, description):

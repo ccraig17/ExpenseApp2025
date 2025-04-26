@@ -115,5 +115,5 @@ class ExpenseApp(QWidget):
             return
         expense_id = int(self.table.item(selected_row, 0).text())
         confirm = QMessageBox.question(self, "Confirm", "Are you sure you want to delete?", QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
-        if confirm == QMessageBox.StandardButton.Yes and delete_expenses( expense_id):
+        if confirm == QMessageBox.StandardButton.Yes and delete_expenses(expense_id):
             self.load_table_data()
